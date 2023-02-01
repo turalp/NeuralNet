@@ -11,39 +11,56 @@
 # https://towardsdatascience.com/building-your-first-neural-network-in-tensorflow-2-tensorflow-for-hackers-part-i-e1e2f1dfe7a0
 
 from __future__ import annotations
-from turtle import shape
-import tensorflow as tf
-
-from tensorflow import keras
-from keras import layers
 
 from enums.NodeType import NodeType
+from models.activation_function import ActivationFunction
+from models.graph_connection import GraphConnection
 from models.graph_node import GraphNode
-from models.neural_net import NeuralNetNetwork
-from static.static_values import node_types
+from models.neural_net import NeuralNet
 
 class NeuralNetBuilder:
-    layers: layers.Layer
+    neural_net: NeuralNet
+    inputs: list[int]
+    outputs: list[int]
 
-    def __init__(self) -> None:
-        pass
+    def __init__(self, inputs: list[int], outputs: list[int]) -> None:
+        self.neural_net = NeuralNet()
+        self.inputs = inputs
+        self.outputs = outputs
 
-    def get_bias(self, neural_net: NeuralNetNetwork) -> GraphNode:
-        bias = filter(lambda x: x.type == node_types[NodeType.BIAS], neural_net)
-        return bias
-
-    def with_inputs(self, neural_net: NeuralNetNetwork) -> list:
-        neural_net.sort_nodes()
-        input_nodes = filter(lambda x: x.type == node_types[NodeType.IN], neural_net)
-        inputs_to_return = list()
-        for input_node in input_nodes:
-            input = keras.Input(shape=(None,))
-            inputs_to_return.append(input)
-        
-        return inputs_to_return
+    def with_activation_function(self, activation_function: ActivationFunction) -> NeuralNetBuilder:
+        self.neural_net.activation_function = activation_function
+        return self
     
-    def with_hid(self, neural_net: NeuralNetNetwork):
-        pass
+    def with_connections(self, connections: list[GraphConnection]) -> NeuralNetBuilder:
+        self.neural_net.connections = connections
+        return self
     
+    def with_nodes(self, connections: list[GraphConnection]) -> NeuralNetBuilder:
+        for connection in connections:
+            if all(node.id != connection.source for node in self.neural_net.graph_nodes):
+                self.__add_node(connection.source)
+            
+            if all(node.id != connection.target for node in self.neural_net.graph_nodes):
+                self.__add_node(connection.target)
+
+        return self
+
+    def return_neural_net(self):
+        return self.neural_net
+    
+    def __add_node(self, id: int) -> None:
+        connections = filter(lambda node: node.target == id, self.neural_net.connections)
+        inputs = [node.source for node in connections]
+        node = GraphNode(id, self.__get_type_of_node(id), inputs)
+        self.neural_net.graph_nodes.append(node)
+    
+    def __get_type_of_node(self, id: int) -> NodeType:
+        if id in self.inputs:
+            return NodeType.IN
+        elif id in self.outputs:
+            return NodeType.OUT
+        else:
+            return NodeType.HID
 
             

@@ -11,3 +11,6 @@ class GraphConnection:
         self.target = target
         self.weight = weight
         self.type = type
+    
+    def __str__(self) -> str:
+        return 'Source: ' + str(self.source) + '\t' + 'Target: ' + str(self.target) + '\t' + 'Weight: ' + str(self.weight) + '\t' + 'Type: ' + str(self.type) + '\n'

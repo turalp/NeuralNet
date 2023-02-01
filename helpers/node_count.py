@@ -1,7 +1,7 @@
 class NodeCount:
-    input_count: int
-    output_count: int
-    output_node: int
+    inputs: list[int]
+    outputs: list[int]
 
-    def __init__(self, output_node) -> None:
-        self.output_node = output_node
+    def __init__(self) -> None:
+        self.inputs = list[int]()
+        self.outputs = list[int]()
