@@ -4,7 +4,7 @@ from helpers.header_helper import HeaderHelper
 from models.activation_function import ActivationFunction
 from models.graph_connection import GraphConnection
 
-from static.constants import ACTIVATION_HEADER, CONNECTION_HEADER, NODE_COUNT_HEADER
+from static.constants import ACTIVATION_HEADER, CONNECTION_HEADER, NODE_COUNT_HEADER, LAYER_HEADER
 
 class NeuralNetDeserializer:
     text: str
@@ -12,6 +12,7 @@ class NeuralNetDeserializer:
     outputs: list[int]
     function: ActivationFunction
     nodes: list[GraphConnection]
+    layers: dict[int, int]
 
     def __init__(self, neural_net: str, inputs: list[int], outputs: list[int]) -> None:
         self.text = neural_net
@@ -27,6 +28,7 @@ class NeuralNetDeserializer:
                 headers.is_activation = False
                 headers.is_connections = False
                 headers.is_node_type = False
+                headers.is_layers = False
                 continue
 
             self.__process_line(line, headers, nodes)
@@ -53,6 +55,10 @@ class NeuralNetDeserializer:
         if headers.is_activation:
             params = line.split('\t')
             self.function = ActivationFunction(int(params[0]), params[1])
+        
+        if headers.is_layers:
+            params = line.split('\t')
+            self.layers[int(params[0])] = int(params[0])
 
     def __checkHeader(self, line: str, headers: HeaderHelper) -> None:
         if line == ACTIVATION_HEADER:
@@ -63,3 +69,6 @@ class NeuralNetDeserializer:
         
         if line == NODE_COUNT_HEADER:
             headers.is_node_type = True
+
+        if line == LAYER_HEADER:
+            headers.is_layers = True

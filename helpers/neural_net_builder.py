@@ -18,15 +18,19 @@ from models.graph_connection import GraphConnection
 from models.graph_node import GraphNode
 from models.neural_net import NeuralNet
 
+import array
+
 class NeuralNetBuilder:
     neural_net: NeuralNet
     inputs: list[int]
     outputs: list[int]
+    layers: dict[int, int]
 
-    def __init__(self, inputs: list[int], outputs: list[int]) -> None:
+    def __init__(self, inputs: list[int], outputs: list[int], layers: dict[int, int]) -> None:
         self.neural_net = NeuralNet()
         self.inputs = inputs
         self.outputs = outputs
+        self.layers = layers
 
     def with_activation_function(self, activation_function: ActivationFunction) -> NeuralNetBuilder:
         self.neural_net.activation_function = activation_function
@@ -52,7 +56,7 @@ class NeuralNetBuilder:
     def __add_node(self, id: int) -> None:
         connections = filter(lambda node: node.target == id, self.neural_net.connections)
         inputs = [node.source for node in connections]
-        node = GraphNode(id, self.__get_type_of_node(id), inputs)
+        node = GraphNode(id, self.__get_type_of_node(id), inputs, self.layers[id])
         self.neural_net.graph_nodes.append(node)
     
     def __get_type_of_node(self, id: int) -> NodeType:

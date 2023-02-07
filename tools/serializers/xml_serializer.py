@@ -59,6 +59,7 @@ class XmlSerializer(Serializer):
 
             nodeElement.setAttribute("type", node.type)
             nodeElement.setAttribute("id", node.id)
+            nodeElement.setAttribute("layer", node.layer)
 
             nodes.appendChild(nodeElement)
         

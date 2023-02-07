@@ -4,6 +4,24 @@
 # Cyclic/acyclic indicator.
 acyclic
 
+# Nodes (id layer)
+0	1
+1	1
+2	1
+3	1
+4	1
+5	1	
+6	1
+7	8
+11  7
+12  3
+13  4
+15  4
+18  6
+28  5
+29	2
+153 3
+
 # Connections (source target weight).
 0	7	-0.5639043603993253
 0	12	-3.304580547798688
