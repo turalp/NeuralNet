@@ -7,7 +7,7 @@ class XmlSerializer(Serializer):
     neural_net: NeuralNet
 
     def __init__(self, neural_net: NeuralNet) -> None:
-        neural_net = neural_net
+        self.neural_net = neural_net
 
     def serialize(self) -> str:
         root = Document()
@@ -31,8 +31,8 @@ class XmlSerializer(Serializer):
         functions = root.createElement("activationFunctions")
 
         function = root.createElement("function")
-        function.setAttribute("id", self.neural_net.activation_function.id)
-        function.setAttribute("name", self.neural_net.activation_function.name)
+        function.setAttribute("id", str(self.neural_net.activation_function.id))
+        function.setAttribute("name", str(self.neural_net.activation_function.name))
 
         functions.appendChild(function)
         return functions
@@ -43,9 +43,9 @@ class XmlSerializer(Serializer):
         for connection in self.neural_net.connections:
             connectionElement = root.createElement("connection")
             
-            connectionElement.setAttribute("source", connection.source)
-            connectionElement.setAttribute("target", connection.target)
-            connectionElement.setAttribute("weight", connection.weight)
+            connectionElement.setAttribute("source", str(connection.source))
+            connectionElement.setAttribute("target", str(connection.target))
+            connectionElement.setAttribute("weight", str(connection.weight))
             
             connections.appendChild(connectionElement)
         
@@ -57,9 +57,9 @@ class XmlSerializer(Serializer):
         for node in self.neural_net.graph_nodes:
             nodeElement = root.createElement("node")
 
-            nodeElement.setAttribute("type", node.type)
-            nodeElement.setAttribute("id", node.id)
-            nodeElement.setAttribute("layer", node.layer)
+            nodeElement.setAttribute("type", str(node.type))
+            nodeElement.setAttribute("id", str(node.id))
+            nodeElement.setAttribute("layer", str(node.layer))
 
             nodes.appendChild(nodeElement)
         

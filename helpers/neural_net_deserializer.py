@@ -18,6 +18,7 @@ class NeuralNetDeserializer:
         self.text = neural_net
         self.inputs = inputs
         self.outputs = outputs
+        self.layers = dict[int, int]()
     
     def deserialize(self) -> None:
         lines = self.text.splitlines()
@@ -58,7 +59,7 @@ class NeuralNetDeserializer:
         
         if headers.is_layers:
             params = line.split('\t')
-            self.layers[int(params[0])] = int(params[0])
+            self.layers[int(params[0])] = int(params[1])
 
     def __checkHeader(self, line: str, headers: HeaderHelper) -> None:
         if line == ACTIVATION_HEADER:

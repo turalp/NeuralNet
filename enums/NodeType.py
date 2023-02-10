@@ -5,3 +5,6 @@ class NodeType(Enum):
     IN = 1
     OUT = 2,
     HID = 3
+
+    def __str__(self) -> str:
+        return str(self.value)
