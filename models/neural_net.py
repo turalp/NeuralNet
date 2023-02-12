@@ -13,7 +13,7 @@ class NeuralNet:
 
     def __init__(self, activation_function: ActivationFunction=None, connections: list[GraphConnection]=None) -> None:
         self.activation_function = activation_function
-        self.connections = connections
+        self.connections = list[GraphConnection]() if connections is None else connections
         self.graph_nodes = list[GraphNode]()
         self.nodes = NodeCount()
     
