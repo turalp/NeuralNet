@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<root>
+	<activationFunctions>
+		<function id="0" name="LeakyReLU"/>
+	</activationFunctions>
+	<nodes>
+		<node type="3" id="0" layer="1"/>
+		<node type="2" id="7" layer="8"/>
+		<node type="3" id="12" layer="3"/>
+		<node type="1" id="1" layer="1"/>
+		<node type="3" id="15" layer="4"/>
+		<node type="3" id="29" layer="2"/>
+		<node type="1" id="2" layer="1"/>
+		<node type="3" id="11" layer="7"/>
+		<node type="3" id="153" layer="3"/>
+		<node type="1" id="3" layer="1"/>
+		<node type="3" id="13" layer="4"/>
+		<node type="3" id="18" layer="6"/>
+		<node type="1" id="4" layer="1"/>
+		<node type="1" id="5" layer="1"/>
+		<node type="1" id="6" layer="1"/>
+		<node type="3" id="28" layer="5"/>
+	</nodes>
+	<connections>
+		<connection source="0" target="7" weight="-0.5639043603993253"/>
+		<connection source="0" target="12" weight="-3.304580547798688"/>
+		<connection source="1" target="7" weight="0.21391757361303324"/>
+		<connection source="1" target="15" weight="0.023660979151877516"/>
+		<connection source="1" target="29" weight="-6.245922970238475"/>
+		<connection source="2" target="7" weight="0.7592189619122884"/>
+		<connection source="2" target="11" weight="-0.43254940638028977"/>
+		<connection source="2" target="15" weight="-5.197799657831742"/>
+		<connection source="2" target="153" weight="0.034843349623898075"/>
+		<connection source="3" target="12" weight="0.09015213274762358"/>
+		<connection source="3" target="13" weight="-0.5461810253866888"/>
+		<connection source="3" target="18" weight="0.14594647756498247"/>
+		<connection source="3" target="29" weight="0.6528066603786841"/>
+		<connection source="4" target="11" weight="0.14799869002331253"/>
+		<connection source="4" target="13" weight="-0.7752664158979157"/>
+		<connection source="5" target="7" weight="0.3381014997812739"/>
+		<connection source="5" target="18" weight="0.010203852758783516"/>
+		<connection source="5" target="29" weight="0.13428667569438724"/>
+		<connection source="6" target="7" weight="0.2685999979519883"/>
+		<connection source="6" target="12" weight="0.013318307017267925"/>
+		<connection source="6" target="18" weight="-2.750659410356615"/>
+		<connection source="11" target="7" weight="5.539521427711541"/>
+		<connection source="12" target="7" weight="-2.30389718800366"/>
+		<connection source="12" target="11" weight="4.926947967328508"/>
+		<connection source="12" target="13" weight="1.3543590231712017"/>
+		<connection source="12" target="15" weight="7.608225738998648"/>
+		<connection source="12" target="18" weight="-4.775265439058468"/>
+		<connection source="13" target="28" weight="-4.034064800064355"/>
+		<connection source="15" target="11" weight="7.49148338731005"/>
+		<connection source="18" target="7" weight="-3.989661446993112"/>
+		<connection source="18" target="11" weight="0.9034357319128712"/>
+		<connection source="28" target="18" weight="5.086980418244333"/>
+		<connection source="29" target="11" weight="-2.81889334410538"/>
+		<connection source="29" target="12" weight="5.3709658878012005"/>
+		<connection source="29" target="18" weight="-0.4708601446073776"/>
+		<connection source="29" target="153" weight="-0.7087108340617145"/>
+		<connection source="153" target="18" weight="5.0"/>
+	</connections>
+</root>

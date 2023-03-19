@@ -17,7 +17,7 @@ class XmlDeserializer(Deserializer):
         self.neural_net = None
         super().__init__()
 
-    def deserialize(self, xml_text: str) -> str:
+    def deserialize(self, xml_text: str) -> NeuralNet:
         document = parseString(xml_text)
         
         self.neural_net = NeuralNet()
@@ -45,9 +45,8 @@ class XmlDeserializer(Deserializer):
             node = GraphNode(int(nodeElement.getAttribute("id")),\
                 NodeType(int(nodeElement.getAttribute("type"))),\
                 int(nodeElement.getAttribute("layer")))
-            self.neural_net.graph_nodes.append(node)
-        
-        self.neural_net.graph_nodes.sort(key=lambda node: node.layer)
+            self.neural_net.graph_nodes[node.id][node.type] = node.layer
+            self.neural_net.layers[node.layer].append(node.id)
 
     def __set_connections__(self, document: Document) -> None:
         connectionElements = document.getElementsByTagName(CONNECTION_TAG)
@@ -59,4 +58,3 @@ class XmlDeserializer(Deserializer):
                 int(connectionElement.getAttribute("target")),\
                 float(connectionElement.getAttribute("weight")))
             self.neural_net.connections.append(connection)
-        

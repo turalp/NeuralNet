@@ -7,3 +7,5 @@ node_types: Dict[NodeType, str] = {
     NodeType.OUT: "out",
     NodeType.HID: "hid"
 }
+
+input_layer_id: int = 1

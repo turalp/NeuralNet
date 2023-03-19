@@ -20,75 +20,76 @@ xml_text = xml_to_deserialize.read()
 deserializer = XmlDeserializer()
 deserializer.deserialize(xml_text)
 
-neural_net_builder = NeuralNetBuilder(deserializer.inputs, deserializer.outputs)
-neural_net = neural_net_builder\
-    .with_activation_function(deserializer.function)\
-    .with_connections(deserializer.nodes)\
-    .with_nodes(deserializer.nodes)\
-    .return_neural_net()
+print(deserializer)
+# neural_net_builder = NeuralNetBuilder(deserializer.inputs, deserializer.outputs)
+# neural_net = neural_net_builder\
+#     .with_activation_function(deserializer.function)\
+#     .with_connections(deserializer.nodes)\
+#     .with_nodes(deserializer.nodes)\
+#     .return_neural_net()
 
-inputs = {}
-processed_nodes = {}
+# inputs = {}
+# processed_nodes = {}
 
-nodes_to_add = list(filter(lambda node: node.type == NodeType.IN, neural_net.graph_nodes))
-for node in nodes_to_add:
-    inputs[node.id] = keras.Input(shape=(1,), dtype='float32')
-    processed_nodes[node.id] = inputs[node.id]
+# nodes_to_add = list(filter(lambda node: node.type == NodeType.IN, neural_net.graph_nodes))
+# for node in nodes_to_add:
+#     inputs[node.id] = keras.Input(shape=(1,), dtype='float32')
+#     processed_nodes[node.id] = inputs[node.id]
 
-nodes_count_wout_inputs = len(neural_net.graph_nodes) - len(inputs.keys())
+# nodes_count_wout_inputs = len(neural_net.graph_nodes) - len(inputs.keys())
 
 
-index = 0
-can_be_created = False
-nodes_length = len(neural_net.graph_nodes)
-while len(processed_nodes) < nodes_length - 1:
-    if index >= nodes_length:
-        index = 0
+# index = 0
+# can_be_created = False
+# nodes_length = len(neural_net.graph_nodes)
+# while len(processed_nodes) < nodes_length - 1:
+#     if index >= nodes_length:
+#         index = 0
 
-    if neural_net.graph_nodes[index].id in neural_net.nodes.outputs:
-        continue
+#     if neural_net.graph_nodes[index].id in neural_net.nodes.outputs:
+#         continue
     
-    for input_of_node in neural_net.graph_nodes[index].graph_inputs:
-        if processed_nodes.get(input_of_node) is None:
-            can_be_created = False
-            break
+#     for input_of_node in neural_net.graph_nodes[index].graph_inputs:
+#         if processed_nodes.get(input_of_node) is None:
+#             can_be_created = False
+#             break
 
-        can_be_created = True
+#         can_be_created = True
 
-    if can_be_created:
-        connections = filter(lambda connection: connection.target == neural_net.graph_nodes[index].id, neural_net.connections)
-        connected_nodes = []
-        for connection in connections:
-            initializer = tf.keras.initializers.Constant(connection.weight)
-            x = layers.Dense(0, activation=neural_net.activation_function.name, kernel_initializer=initializer)(processed_nodes[connection.source])
-            connected_nodes.append(x)
+#     if can_be_created:
+#         connections = filter(lambda connection: connection.target == neural_net.graph_nodes[index].id, neural_net.connections)
+#         connected_nodes = []
+#         for connection in connections:
+#             initializer = tf.keras.initializers.Constant(connection.weight)
+#             x = layers.Dense(0, activation=neural_net.activation_function.name, kernel_initializer=initializer)(processed_nodes[connection.source])
+#             connected_nodes.append(x)
         
-        result = layers.concatenate(connected_nodes)
-        processed_nodes[neural_net.graph_nodes[index].id] = result
+#         result = layers.concatenate(connected_nodes)
+#         processed_nodes[neural_net.graph_nodes[index].id] = result
     
-    index += 1
-    can_be_created = False
+#     index += 1
+#     can_be_created = False
 
-model_inputs = list(inputs.values())
-model_outputs = []
-for output_id in outputs:
-    input_ids_to_output = list(filter(lambda connection: connection.target == output_id, neural_net.connections))
-    nodes_to_concatenate = []
-    for connection in input_ids_to_output:
-        nodes_to_concatenate.append(processed_nodes[connection.source])
+# model_inputs = list(inputs.values())
+# model_outputs = []
+# for output_id in outputs:
+#     input_ids_to_output = list(filter(lambda connection: connection.target == output_id, neural_net.connections))
+#     nodes_to_concatenate = []
+#     for connection in input_ids_to_output:
+#         nodes_to_concatenate.append(processed_nodes[connection.source])
     
-    result = layers.concatenate(nodes_to_concatenate)
-    model_outputs.append(result)
+#     result = layers.concatenate(nodes_to_concatenate)
+#     model_outputs.append(result)
 
-model = keras.Model(model_inputs, model_outputs, name="Multiplexer")
-model.build(input_shape=(7,))
-keras.utils.plot_model(model, "multi_input_and_output_model.png", show_shapes=True)
-
-
-# path_to_inputs = input("File for dataset: ")
-# inputs = open(path_to_inputs, 'r', encoding='utf-8')
-prediction = model.predict(np.array([0, 0, 0, 0, 0, 0, 0]))
-print("Prediction shape: ", prediction.shape)
+# model = keras.Model(model_inputs, model_outputs, name="Multiplexer")
+# model.build(input_shape=(7,))
+# keras.utils.plot_model(model, "multi_input_and_output_model.png", show_shapes=True)
 
 
-print("GNN was transferred to Tensorflow successfully.")
+# # path_to_inputs = input("File for dataset: ")
+# # inputs = open(path_to_inputs, 'r', encoding='utf-8')
+# prediction = model.predict(np.array([0, 0, 0, 0, 0, 0, 0]))
+# print("Prediction shape: ", prediction.shape)
+
+
+# print("GNN was transferred to Tensorflow successfully.")
