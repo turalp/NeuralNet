@@ -1,0 +1,226 @@
+<?xml version="1.0" ?>
+<root>
+    <activationFunctions>
+        <function id="0" name="Tanh"/>
+        <function id="1" name="Linear"/>
+    </activationFunctions>
+    <nodes>
+        <!-- Input nodes -->
+        <node type="1" id="0" layer="1"/>
+        <node type="1" id="1" layer="1"/>
+        <node type="1" id="2" layer="1"/>
+        <node type="1" id="3" layer="1"/>
+        <!-- Hidden nodes (layer 2) -->
+        <node type="3" id="4" layer="2"/>
+        <node type="3" id="5" layer="2"/>
+        <node type="3" id="6" layer="2"/>
+        <node type="3" id="7" layer="2"/>
+        <node type="3" id="8" layer="2"/>
+        <node type="3" id="9" layer="2"/>
+        <node type="3" id="10" layer="2"/>
+        <node type="3" id="11" layer="2"/>
+        <node type="3" id="12" layer="2"/>
+        <node type="3" id="13" layer="2"/>
+        <!-- Hidden nodes (layer 3) -->
+        <node type="3" id="14" layer="3"/>
+        <node type="3" id="15" layer="3"/>
+        <node type="3" id="16" layer="3"/>
+        <node type="3" id="17" layer="3"/>
+        <node type="3" id="18" layer="3"/>
+        <node type="3" id="19" layer="3"/>
+        <node type="3" id="20" layer="3"/>
+        <node type="3" id="21" layer="3"/>
+        <node type="3" id="22" layer="3"/>
+        <node type="3" id="23" layer="3"/>
+        <!-- Output node -->
+        <node type="2" id="24" layer="4"/>
+        <!-- Bias nodes -->
+        <node type="1" id="25" layer="0"/>
+    </nodes>
+    <connections>
+        <!-- Connections from input to hidden layer 2 -->
+       
+        <connection source="0" target="4"/>
+        <connection source="0" target="5"/>
+        <connection source="0" target="6"/>
+        <connection source="0" target="7"/>
+        <connection source="0" target="8"/>
+        <connection source="0" target="9"/>
+        <connection source="0" target="10"/>
+        <connection source="0" target="11"/>
+        <connection source="0" target="12"/>
+        <connection source="0" target="13"/>
+        <connection source="1" target="4"/>
+        <connection source="1" target="5"/>
+        <connection source="1" target="6"/>
+        <connection source="1" target="7"/>
+        <connection source="1" target="8"/>
+        <connection source="1" target="9"/>
+        <connection source="1" target="10"/>
+        <connection source="1" target="11"/>
+        <connection source="1" target="12"/>
+        <connection source="1" target="13"/>
+        <connection source="2" target="4"/>
+        <connection source="2" target="5"/>
+        <connection source="2" target="6"/>
+        <connection source="2" target="7"/>
+        <connection source="2" target="8"/>
+        <connection source="2" target="9"/>
+        <connection source="2" target="10"/>
+        <connection source="2" target="11"/>
+        <connection source="2" target="12"/>
+        <connection source="2" target="13"/>
+        <connection source="3" target="4"/>
+        <connection source="3" target="5"/>
+        <connection source="3" target="6"/>
+        <connection source="3" target="7"/>
+        <connection source="3" target="8"/>
+        <connection source="3" target="9"/>
+        <connection source="3" target="10"/>
+        <connection source="3" target="11"/>
+        <connection source="3" target="12"/>
+        <connection source="3" target="13"/>
+        <!-- Connections from hidden layer 2 to hidden layer 3 -->
+        <connection source="4" target="14"/>
+        <connection source="4" target="15"/>
+        <connection source="4" target="16"/>
+        <connection source="4" target="17"/>
+        <connection source="4" target="18"/>
+        <connection source="4" target="19"/>
+        <connection source="4" target="20"/>
+        <connection source="4" target="21"/>
+        <connection source="4" target="22"/>
+        <connection source="4" target="23"/>
+        <connection source="5" target="14"/>
+        <connection source="5" target="15"/>
+        <connection source="5" target="16"/>
+        <connection source="5" target="17"/>
+        <connection source="5" target="18"/>
+        <connection source="5" target="19"/>
+        <connection source="5" target="20"/>
+        <connection source="5" target="21"/>
+        <connection source="5" target="22"/>
+        <connection source="5" target="23"/>
+        <connection source="6" target="14"/>
+        <connection source="6" target="15"/>
+        <connection source="6" target="16"/>
+        <connection source="6" target="17"/>
+        <connection source="6" target="18"/>
+        <connection source="6" target="19"/>
+        <connection source="6" target="20"/>
+        <connection source="6" target="21"/>
+        <connection source="6" target="22"/>
+        <connection source="6" target="23"/>
+        <connection source="7" target="14"/>
+        <connection source="7" target="15"/>
+        <connection source="7" target="16"/>
+        <connection source="7" target="17"/>
+        <connection source="7" target="18"/>
+        <connection source="7" target="19"/>
+        <connection source="7" target="20"/>
+        <connection source="7" target="21"/>
+        <connection source="7" target="22"/>
+        <connection source="7" target="23"/>
+        <connection source="8" target="14"/>
+        <connection source="8" target="15"/>
+        <connection source="8" target="16"/>
+        <connection source="8" target="17"/>
+        <connection source="8" target="18"/>
+        <connection source="8" target="19"/>
+        <connection source="8" target="20"/>
+        <connection source="8" target="21"/>
+        <connection source="8" target="22"/>
+        <connection source="8" target="23"/>
+        <connection source="9" target="14"/>
+        <connection source="9" target="15"/>
+        <connection source="9" target="16"/>
+        <connection source="9" target="17"/>
+        <connection source="9" target="18"/>
+        <connection source="9" target="19"/>
+        <connection source="9" target="20"/>
+        <connection source="9" target="21"/>
+        <connection source="9" target="22"/>
+        <connection source="9" target="23"/>
+        <connection source="10" target="14"/>
+        <connection source="10" target="15"/>
+        <connection source="10" target="16"/>
+        <connection source="10" target="17"/>
+        <connection source="10" target="18"/>
+        <connection source="10" target="19"/>
+        <connection source="10" target="20"/>
+        <connection source="10" target="21"/>
+        <connection source="10" target="22"/>
+        <connection source="10" target="23"/>
+        <connection source="11" target="14"/>
+        <connection source="11" target="15"/>
+        <connection source="11" target="16"/>
+        <connection source="11" target="17"/>
+        <connection source="11" target="18"/>
+        <connection source="11" target="19"/>
+        <connection source="11" target="20"/>
+        <connection source="11" target="21"/>
+        <connection source="11" target="22"/>
+        <connection source="11" target="23"/>
+        <connection source="12" target="14"/>
+        <connection source="12" target="15"/>
+        <connection source="12" target="16"/>
+        <connection source="12" target="17"/>
+        <connection source="12" target="18"/>
+        <connection source="12" target="19"/>
+        <connection source="12" target="20"/>
+        <connection source="12" target="21"/>
+        <connection source="12" target="22"/>
+        <connection source="12" target="23"/>
+        <connection source="13" target="14"/>
+        <connection source="13" target="15"/>
+        <connection source="13" target="16"/>
+        <connection source="13" target="17"/>
+        <connection source="13" target="18"/>
+        <connection source="13" target="19"/>
+        <connection source="13" target="20"/>
+        <connection source="13" target="21"/>
+        <connection source="13" target="22"/>
+        <connection source="13" target="23"/>
+        <!-- Connections from hidden layer 3 to output layer -->
+        <connection source="14" target="24"/>
+        <connection source="15" target="24"/>
+        <connection source="16" target="24"/>
+        <connection source="17" target="24"/>
+        <connection source="18" target="24"/>
+        <connection source="19" target="24"/>
+        <connection source="20" target="24"/>
+        <connection source="21" target="24"/>
+        <connection source="22" target="24"/>
+        <connection source="23" target="24"/>
+        <!-- Connections from bias node -->
+        <connection source="25" target="4"/>
+        <connection source="25" target="5"/>
+        <connection source="25" target="6"/>
+        <connection source="25" target="7"/>
+        <connection source="25" target="8"/>
+        <connection source="25" target="9"/>
+        <connection source="25" target="10"/>
+        <connection source="25" target="11"/>
+        <connection source="25" target="12"/>
+        <connection source="25" target="13"/>
+        <connection source="25" target="14"/>
+        <connection source="25" target="15"/>
+        <connection source="25" target="16"/>
+        <connection source="25" target="17"/>
+        <connection source="25" target="18"/>
+        <connection source="25" target="19"/>
+        <connection source="25" target="20"/>
+        <connection source="25" target="21"/>
+        <connection source="25" target="22"/>
+        <connection source="25" target="23"/>
+    </connections>
+    <weights>
+        <!-- Specify the weights for each connection, replace "w" with the actual weight values -->
+        <!-- ... -->
+    </weights>
+</root>
+
+
+
+
+

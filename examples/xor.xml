@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<root>
+	<activationFunctions>
+		<function id="0" name="Sigmoid"/>
+	</activationFunctions>
+	<nodes>
+		<!-- Input nodes -->
+		<node type="1" id="0" layer="1"/>
+		<node type="1" id="1" layer="1"/>
+		<!-- Hidden nodes -->
+		<node type="3" id="2" layer="2"/>
+		<node type="3" id="3" layer="2"/>
+		<!-- Output node -->
+		<node type="2" id="4" layer="3"/>
+	</nodes>
+	<connections>
+		<!-- Connections from input to hidden layer -->
+		<connection source="0" target="2" weight="20"/>
+		<connection source="0" target="3" weight="20"/>
+		<connection source="1" target="2" weight="20"/>
+		<connection source="1" target="3" weight="20"/>
+		<!-- Connections from hidden layer to output layer -->
+		<connection source="2" target="4" weight="-20"/>
+		<connection source="3" target="4" weight="20"/>
+		<!-- Bias connections -->
+		<connection source="5" target="2" weight="-10"/>
+		<connection source="5" target="3" weight="30"/>
+		<connection source="5" target="4" weight="-30"/>
+    </connections>
+</root>
