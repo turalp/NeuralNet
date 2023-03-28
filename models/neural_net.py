@@ -9,7 +9,7 @@ from models.graph_node import GraphNode
 
 class NeuralNet:
     connections: list[GraphConnection]
-    graph_nodes: dict[int, dict[NodeType, int]]
+    graph_nodes: list[GraphNode]
     activation_function: ActivationFunction
     nodes: NodeCount
     layers: defaultdict(list[int])
@@ -17,7 +17,7 @@ class NeuralNet:
     def __init__(self, activation_function: ActivationFunction=None, connections: list[GraphConnection]=None) -> None:
         self.activation_function = activation_function
         self.connections = list[GraphConnection]() if connections is None else connections
-        self.graph_nodes = dict[int, dict[NodeType, int]]()
+        self.graph_nodes = dict[int, GraphNode]()
         self.nodes = NodeCount()
         self.layers = defaultdict(list[int])
     

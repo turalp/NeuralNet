@@ -45,7 +45,7 @@ class XmlDeserializer(Deserializer):
             node = GraphNode(int(nodeElement.getAttribute("id")),\
                 NodeType(int(nodeElement.getAttribute("type"))),\
                 int(nodeElement.getAttribute("layer")))
-            self.neural_net.graph_nodes[node.id][node.type] = node.layer
+            self.neural_net.graph_nodes.append(node)
             self.neural_net.layers[node.layer].append(node.id)
 
     def __set_connections__(self, document: Document) -> None:
