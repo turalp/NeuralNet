@@ -12,13 +12,12 @@ class Interpreter:
         pass
 
     def interpret(self, neural_net: NeuralNet) -> Model:
-        # inputs = self.__process_inputs__(neural_net=neural_net)
-        # outputs = self.__process_outputs(neural_net=neural_net)
         nodes = self.__process_nodes__(neural_net=neural_net)
         connections = self.__process_connections__(neural_net=neural_net)
         layers = self.__process_layers__(nodes, connections)
 
-        inputs = Input(shape=(len(layers[1]),))
+        input_nodes = [node.id for node in neural_net.graph_nodes if node.type == NodeType.IN]
+        inputs = Input(shape=(len(input_nodes),))
         x = inputs
         for layer_num in sorted(layers.keys()):
             if layer_num == 1:
@@ -60,13 +59,13 @@ class Interpreter:
                 'weight': weight
             })
 
-        pass
+        return layers
 
     def __process_nodes__(self, neural_net: NeuralNet) -> dict:
         nodes = {}
         for node in neural_net.graph_nodes:
-            nodes[node] = {
-                'type': int(node.type),
+            nodes[node.id] = {
+                'type': int(node.type.value),
                 'layer': int(node.layer)
             }
         
@@ -83,3 +82,5 @@ class Interpreter:
             })
         
         return connections
+    
+    

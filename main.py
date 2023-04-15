@@ -1,4 +1,5 @@
 import tensorflow as tf
+import keras
 
 from deserializers.xml_deserializer import XmlDeserializer
 from tools.interpreters.interpreter import Interpreter
@@ -15,6 +16,8 @@ neural_net = deserializer.deserialize(xml_text)
 
 interpret = Interpreter()
 model = interpret.interpret(neural_net)
+
+keras.utils.plot_model(model, "multi_input_and_output_model.png", show_shapes=True)
 
 input_data = tf.constant([[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]])
 output_data = model(input_data)
